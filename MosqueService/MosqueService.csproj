@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MosqueDb.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MosqueDb.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Frontend\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>

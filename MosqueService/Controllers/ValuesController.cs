@@ -10,14 +10,13 @@ namespace MosqueService.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private readonly ApiContext ctx = ApiContext.db;
+        //private readonly ApiContext ctx = ApiContext.db;
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<Announcement> Get()
+        public IActionResult Get()
         {
-            var x = ctx.MosqueAnncounments.ToList();
-            return x;
+            return Ok("hello");
         }
 
         //// GET api/values/5

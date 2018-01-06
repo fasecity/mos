@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Mosan;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,8 +27,11 @@ namespace MosqueService
         //overides
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //set src sqlite
-            optionsBuilder.UseSqlite("Data Source=MosqueDb.db");
+            
+            //set src sqlite local--works All remember check  appsettings json file
+             optionsBuilder.UseSqlite("Data Source=MosqueDb.db");
+
+        
         }
 
     }

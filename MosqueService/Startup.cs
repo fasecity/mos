@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +19,8 @@ namespace MosqueService
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+         
         }
 
         public IConfiguration Configuration { get; }
@@ -25,12 +28,16 @@ namespace MosqueService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //db                                                         
-            services.AddDbContext<ApiContext>(options => options.UseSqlite("Filename=MosqueDb.db"));
+
+            //new
+            services
+                .AddDbContext<ApiContext>(options =>
+                    options.UseSqlite(Configuration.GetConnectionString("Sqlite")));
 
             //add cors service
             services.AddCors(options => options.AddPolicy("Cors",
-                builder => {
+                builder =>
+                {
                     builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader();
