@@ -29,7 +29,7 @@ namespace MosqueService
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //new
+            //new---
             services
                 .AddDbContext<ApiContext>(options =>
                     options.UseSqlite(Configuration.GetConnectionString("Sqlite")));
