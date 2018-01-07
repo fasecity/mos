@@ -23,6 +23,8 @@ namespace MosqueService
 
         }
         public DbSet<Announcement> MosqueAnncounments { get; set; }
+       // public DbSet<User> Users { get; set; }
+
 
         //overides
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
