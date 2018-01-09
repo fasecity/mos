@@ -48,8 +48,9 @@ namespace MosqueService
 
             //-------------------------------------AUTH--------------------------------------------------------------------//
 
-            //sign in key-- is literally what it says but encrypeted
-            var signInKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));
+            //sign in key-- is literally what it says but encrypeted//
+             var signInKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));
+          
 
 
             //add auth service + options JWT bearer auth + configurare jwt
@@ -61,7 +62,6 @@ namespace MosqueService
                 cfg.RequireHttpsMetadata = false;//--make true in prod req httpsz
                 cfg.SaveToken = true;//------------- saves token in db after authorizefdg
 
-
                 cfg.TokenValidationParameters = new TokenValidationParameters()//--gets/sets the params to validate token
                 {
                     //in prod set to true and set them in the Jwt
@@ -70,6 +70,7 @@ namespace MosqueService
                     ValidateIssuer = false,
                     ValidateLifetime = false,//---not sure but seems like time
                     ValidateIssuerSigningKey = true
+                    
 
 
                 };

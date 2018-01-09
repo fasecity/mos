@@ -35,6 +35,11 @@ namespace MosqueService.Controllers
     [Route("api/auth")]
     public class AuthController : Controller
     {
+        //[HttpGet]
+        //public IActionResult Get()
+        //{
+        //    return Ok("welcome to auth");
+        //}
 
         //initializes database
         readonly ApiContext db;
@@ -43,15 +48,23 @@ namespace MosqueService.Controllers
             this.db = db;
         }
 
-        [HttpPost("login")]//Tested Hash passwords b4 store
+        // [HttpPost("login")]//Tested Hash passwords b4 store
+        [HttpPost]
         public ActionResult Login([FromBody]LoginData loginData)
         {
+            if (!ModelState.IsValid)
+            {
+                return NotFound("Wtf is going on !!!! ");
+            }
 
-            User user = new User();
+            var user = new User();
 
+            user.Id = "100"; ///!!!ID is for test needed the user Id sqlite auto generates  it  but  
             user.Email = loginData.Email;
             user.Password = loginData.Password;
-
+            user.FirstName = "SuperGuyTestName";
+            user.LastName = "TestLastName";
+            var x = CreateJwtPacket(user);
 
             //user = db.Users.SingleOrDefault(x => x.Email == loginData.Email
             //&& x.Password == loginData.Password);
@@ -61,7 +74,7 @@ namespace MosqueService.Controllers
             //}
             //return Ok(CreateJwtPacket(user));
 
-            return Ok();
+            return Ok(x);
         }
 
         [HttpPost("register")]
